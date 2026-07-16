@@ -6,11 +6,12 @@ of specific software, at specific git commits, re-check with exactly their
 documented assumptions. Its first twelve leaves attest four cryptographic
 Rust libraries (Ed25519 implementations); as of **entry 13 (2026-07-16)**
 the log also attests **its own accumulator machinery** — a kernel-checked
-mechanization of the log's own security analysis, making this the first
-deployed transparency log to carry proofs of its own honesty as one of
-its own entries (subject
+mechanization of the log's security analysis, so the log carries
+kernel-checked proofs *about the accumulator model* underlying its own
+inclusion and consistency reasoning, as one of its own entries (subject
 [`ltl-accumulator-verified`](https://github.com/saymrwulf/ltl-accumulator-verified);
-scoped to the mechanized model). Current head: tree size 13, root
+scoped to the mechanized model — it does not prove operator honesty,
+signing, or execution provenance). Current head: tree size 13, root
 `3488a2d0…`.
 
 Layout:
