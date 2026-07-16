@@ -1,13 +1,11 @@
 {
   "hash_algorithm": "RFC9162_SHA256",
   "inclusion_proof": [
-    "ed368f5f9b3714b5c633bc55971b61c31af55a8022ac9fb567515810007b527f",
-    "3253f2e4dcb5515e0caf021b1e4a257a15bd04df969aaf08174da745d72cd00f",
-    "8cb258d657f1fd00baaa9e0091e26c316cb69b591cb249a9543f51cade57c50a",
+    "d564975516d79d8fc6b0c17db318223ae86a918f050ba508c5f4134951b7b6f9",
     "9a15b9a1379edc07ae43d3fc61b52dc4446b56770bff6538e88ed98746ac2283"
   ],
-  "leaf_hash": "ad7ccbb6def18dccba7176f4be36ad1ce731c1456672c19310e73e87c4f312df",
-  "leaf_index": 11,
+  "leaf_hash": "8cb258d657f1fd00baaa9e0091e26c316cb69b591cb249a9543f51cade57c50a",
+  "leaf_index": 12,
   "log_id": "205e4c389cb143e08f0d2d58bdc8e425e47e3cbe7f2108cc58bbe835d2cc41d7",
   "schema_version": 1,
   "sth": {

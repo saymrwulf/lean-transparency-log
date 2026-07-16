@@ -3,6 +3,7 @@
   "inclusion_proof": [
     "ad7ccbb6def18dccba7176f4be36ad1ce731c1456672c19310e73e87c4f312df",
     "3253f2e4dcb5515e0caf021b1e4a257a15bd04df969aaf08174da745d72cd00f",
+    "8cb258d657f1fd00baaa9e0091e26c316cb69b591cb249a9543f51cade57c50a",
     "9a15b9a1379edc07ae43d3fc61b52dc4446b56770bff6538e88ed98746ac2283"
   ],
   "leaf_hash": "ed368f5f9b3714b5c633bc55971b61c31af55a8022ac9fb567515810007b527f",
@@ -12,14 +13,14 @@
   "sth": {
     "hash_algorithm": "RFC9162_SHA256",
     "log_id": "205e4c389cb143e08f0d2d58bdc8e425e47e3cbe7f2108cc58bbe835d2cc41d7",
-    "root_hash": "bcd15f9d7ea1c9e5bd0a9e64fa8d846208b1e29ee167d4f1eac19b30e6913ee9",
+    "root_hash": "3488a2d0ff9f00415bb561d61b01a420e3ca2e0f7b29351ec9ebb3f57319da0d",
     "schema_version": 1,
     "signatures": {
       "ed25519": {
-        "payload_digest_sha256": "fab790262c7e1b1eadc0fbf1d10481da0984cd7b99d6e19d98820d2c33d5f34d",
+        "payload_digest_sha256": "bd7d61897fd48a9113efa9935c25b6dc9e4ddd078de3561bd710442219bb03d4",
         "public_key_fingerprint_sha256": "874c8a008a607021528b2493fa1caf059f9d5c123d29193dfabc09a6d1e7a56a",
         "scheme": "openssl-ed25519",
-        "signature_base64": "GYsT/T61aokWWbv+dqrMt1CtJTeGAC/aX0K1MazlXDo7tpEiex3O1uvox9mU/FWFIxwuBg/l2X8gB0DjYjc1Cw==",
+        "signature_base64": "3NM25ZQblJCjp4sjdL3O7wkn5lDYXAZYIsA+jolZqiqAlYf928vOz/3GLQ2d8Oop1tfjAw5SiMTgcVjDEUlxAQ==",
         "signing_backend": "verified-dalek-serial",
         "signing_provenance": {
           "self_inclusion": "verified",
@@ -38,10 +39,10 @@
         "status": "not_configured"
       }
     },
-    "timestamp": "2026-07-07T19:12:17Z",
-    "tree_size": 12,
+    "timestamp": "2026-07-16T17:55:20Z",
+    "tree_size": 13,
     "type": "pacta.transparency.signed_tree_head.v1"
   },
-  "tree_size": 12,
+  "tree_size": 13,
   "type": "pacta.transparency.receipt.v1"
 }

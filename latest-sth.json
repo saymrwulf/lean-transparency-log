@@ -1,14 +1,14 @@
 {
   "hash_algorithm": "RFC9162_SHA256",
   "log_id": "205e4c389cb143e08f0d2d58bdc8e425e47e3cbe7f2108cc58bbe835d2cc41d7",
-  "root_hash": "bcd15f9d7ea1c9e5bd0a9e64fa8d846208b1e29ee167d4f1eac19b30e6913ee9",
+  "root_hash": "3488a2d0ff9f00415bb561d61b01a420e3ca2e0f7b29351ec9ebb3f57319da0d",
   "schema_version": 1,
   "signatures": {
     "ed25519": {
-      "payload_digest_sha256": "fab790262c7e1b1eadc0fbf1d10481da0984cd7b99d6e19d98820d2c33d5f34d",
+      "payload_digest_sha256": "bd7d61897fd48a9113efa9935c25b6dc9e4ddd078de3561bd710442219bb03d4",
       "public_key_fingerprint_sha256": "874c8a008a607021528b2493fa1caf059f9d5c123d29193dfabc09a6d1e7a56a",
       "scheme": "openssl-ed25519",
-      "signature_base64": "GYsT/T61aokWWbv+dqrMt1CtJTeGAC/aX0K1MazlXDo7tpEiex3O1uvox9mU/FWFIxwuBg/l2X8gB0DjYjc1Cw==",
+      "signature_base64": "3NM25ZQblJCjp4sjdL3O7wkn5lDYXAZYIsA+jolZqiqAlYf928vOz/3GLQ2d8Oop1tfjAw5SiMTgcVjDEUlxAQ==",
       "signing_backend": "verified-dalek-serial",
       "signing_provenance": {
         "self_inclusion": "verified",
@@ -27,7 +27,7 @@
       "status": "not_configured"
     }
   },
-  "timestamp": "2026-07-07T19:12:17Z",
-  "tree_size": 12,
+  "timestamp": "2026-07-16T17:55:20Z",
+  "tree_size": 13,
   "type": "pacta.transparency.signed_tree_head.v1"
 }

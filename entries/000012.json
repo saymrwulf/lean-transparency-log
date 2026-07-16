@@ -1,0 +1,975 @@
+{
+  "index": 12,
+  "leaf": {
+    "attestation": {
+      "certificates": [
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.ConsRec",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [],
+          "name": "LTLAcc.Hash",
+          "observed_axioms": [],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "LTLAcc.sha256"
+          ],
+          "name": "LTLAcc.IsCollision",
+          "observed_axioms": [
+            "LTLAcc.sha256"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.MTH",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.MTH_single",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.MTH_split",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.Path",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.Root",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.Root_left",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.Root_one",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.Root_one_cons",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.Root_right",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.acceptCons",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.acceptCons_sound",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.acceptIncl",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.acceptIncl_complete",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.acceptIncl_sound",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.consRecBinding",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.consRec_base_false_eq",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext"
+          ],
+          "name": "LTLAcc.consRec_base_true_eq",
+          "observed_axioms": [
+            "propext"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.consRec_some_le",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [],
+          "name": "LTLAcc.domsep",
+          "observed_axioms": [],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext"
+          ],
+          "name": "LTLAcc.eq_dropLast_append_of_getLast?",
+          "observed_axioms": [
+            "propext"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.exists_singleton_of_length_one",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.extractCons",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.extractConsNode",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.extractCons_correct",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.extractCons_correct_paper",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.extractCons_nonvacuous",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.extractIncl",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.extractIncl_correct",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.extractIncl_nonvacuous",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.extractMTH",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.extractMTH_correct",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.extractMTH_nonvacuous",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.fork_distinct",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.getD_drop",
+          "observed_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.getD_take",
+          "observed_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "LTLAcc.sha256"
+          ],
+          "name": "LTLAcc.hleaf",
+          "observed_axioms": [
+            "LTLAcc.sha256"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "LTLAcc.sha256"
+          ],
+          "name": "LTLAcc.hnode",
+          "observed_axioms": [
+            "LTLAcc.sha256"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext"
+          ],
+          "name": "LTLAcc.hnode_preimage_inj",
+          "observed_axioms": [
+            "propext"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.incl_complete",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [],
+          "name": "LTLAcc.instDecidableEqHash",
+          "observed_axioms": [],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext"
+          ],
+          "name": "LTLAcc.instInhabitedHash",
+          "observed_axioms": [
+            "propext"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.kbelow",
+          "observed_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.kbelow_eq_of_pow2_between",
+          "observed_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.kbelow_lt",
+          "observed_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.kbelow_pos",
+          "observed_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.kbelow_pow2",
+          "observed_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.kbelow_prefix_eq",
+          "observed_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.le_two_kbelow",
+          "observed_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.pinAccept",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.pinAccept_monotone",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.pinExtract",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.pin_prefix_correct",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.pin_prefix_nonvacuous",
+          "observed_axioms": [
+            "propext",
+            "LTLAcc.sha256",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.pow2_exp_unique",
+          "observed_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext"
+          ],
+          "name": "LTLAcc.take_all",
+          "observed_axioms": [
+            "propext"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [],
+          "name": "LTLAcc.take_append_drop",
+          "observed_axioms": [],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.take_drop_prefix",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "name": "LTLAcc.take_take_le",
+          "observed_axioms": [
+            "propext",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        }
+      ],
+      "environment": {
+        "env_script": "~/aeneas-toolchain/env.sh",
+        "lake_version": "Lake version 5.0.0-src+3dc1a08 (Lean version 4.30.0-rc2)",
+        "lean_project_dir": "$AENEAS_HOME/backends/lean",
+        "lean_version": "Lean (version 4.30.0-rc2, x86_64-unknown-linux-gnu, commit 3dc1a088b6d2d8eafe25a7cd7ec7b58d731bd7cc, Release)"
+      },
+      "issued_at": "2026-07-16T17:54:02Z",
+      "machine_protection": {
+        "lean_guard": "verification/lean-guard",
+        "note": "All Lean compiles route through the repo's lean-guard (memory cap, core pinning, timeout, single-flight lock) when configured."
+      },
+      "provider": "local-pacta-provider",
+      "replay": {
+        "axiom_attempted": true,
+        "axiom_diagnostics": [],
+        "axiom_log_path": "/tmp/entry13/out/logs/axiom-audit.log",
+        "axiom_ok": true,
+        "check_attempted": true,
+        "check_log_path": "/tmp/entry13/out/logs/lean-check.log",
+        "check_ok": true,
+        "checked_files": 12,
+        "diagnostics": [],
+        "failed_files": []
+      },
+      "schema_version": 1,
+      "scope": {
+        "deployment_constraints": [
+          "Attestation scope: this corpus kernel-checks the listed theorems about the mechanized recursive accumulator model. Correspondence with the deployed inclusion verifier is supported by finite differential testing over the pinned families. The deployed consistency verifier is not extensionally equal to the model; applying the mechanized soundness result to the deployed consumer flow additionally relies on an unmechanized authentic-size/root invariant (KNOWN-GAPS 14/15)."
+        ],
+        "exclusions": [
+          "SHA-256 collision resistance (the single opaque boundary axiom; soundness theorems CONSTRUCT collisions)",
+          "deployed-verifier extensional equality (KNOWN-GAPS 14/15 - lied-size divergence, one-sided; refinement invariant unmechanized)",
+          "signature/STH layer and evidence transferability (gap 4)",
+          "asymptotic cost claims (gap 9)"
+        ],
+        "guarantees": []
+      },
+      "signature": {
+        "payload_digest_sha256": "c25970028b0266c3c280a3934600119eaa4338673c00c22e0ed20f8462660bcf",
+        "public_key_fingerprint_sha256": "874c8a008a607021528b2493fa1caf059f9d5c123d29193dfabc09a6d1e7a56a",
+        "scheme": "openssl-ed25519",
+        "signature_base64": "IQ8wjNjYHQ6+sqcFJglQ+yTPCBlwsDF8zYkNb40olK6ScHf5HEH3kEYBLko9w+gvYT/LpWRAy3/Vajn7BGjbDA==",
+        "signing_backend": "verified-dalek-serial",
+        "status": "signed"
+      },
+      "subject": {
+        "component": "ltl-accumulator-verified",
+        "kind": "merkle_accumulator",
+        "repo_commit": "172a1d0653f489d5b7cb73ac7942a57cbb496532",
+        "repo_url": "https://github.com/saymrwulf/ltl-accumulator-verified.git",
+        "verification_dir": "verification",
+        "verified_backend": "rfc9162-sha256/lean-model"
+      }
+    },
+    "schema_version": 1,
+    "type": "pacta.transparency.attestation_leaf.v1"
+  },
+  "leaf_hash": "8cb258d657f1fd00baaa9e0091e26c316cb69b591cb249a9543f51cade57c50a"
+}
