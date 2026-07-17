@@ -9,10 +9,12 @@ files in this repository alone:
   2. every historical Signed Tree Head against the recomputed prefix root
      (a split view or tampered entry fails here),
   3. every STH Ed25519 signature,
-  4. a receipt as a FULL transparency receipt (--receipt FILE): its STH
-     signature, key fingerprint, log id, tree-size agreement, that its
-     leaf hash matches the named entry, that its STH is present in the
-     published history, and its inclusion proof.
+  4. every published receipt under receipts/ (with --all), and any receipt
+     supplied via --receipt FILE, as a FULL transparency receipt: type tag,
+     STH signature, REQUIRED key fingerprint, log id, presence of its STH
+     in the published history, REQUIRED leaf hash matching the named entry,
+     tree-size agreement, and the inclusion proof. Binding fields are
+     required, never compare-if-present.
 
 FAIL-CLOSED: if signature checking is unavailable (no `openssl`, or the
 public key is missing), the run FAILS — signatures are load-bearing and a
@@ -124,6 +126,79 @@ def check_sth_signature(head) -> str:
     return "VALID" if result.returncode == 0 else "INVALID"
 
 
+RECEIPT_TYPE = "pacta.transparency.receipt.v1"
+
+
+def verify_receipt(receipt, heads, structural_only: bool, label: str):
+    """Full binding checks for one receipt. Every binding field is REQUIRED;
+    a missing field is a failure, never a skip. Returns failure strings."""
+    problems = []
+    if receipt.get("type") != RECEIPT_TYPE:
+        problems.append(f"{label}: type is {receipt.get('type')!r}, expected {RECEIPT_TYPE!r}")
+    sth = receipt.get("sth") or {}
+    if sth.get("hash_algorithm") != "RFC9162_SHA256":
+        problems.append(f"{label}: STH hash_algorithm is not RFC9162_SHA256")
+    if receipt.get("hash_algorithm") != "RFC9162_SHA256":
+        problems.append(f"{label}: receipt hash_algorithm is not RFC9162_SHA256")
+    if receipt.get("log_id") != sth.get("log_id"):
+        problems.append(f"{label}: receipt log_id != its STH log_id")
+    try:
+        index = int(receipt.get("leaf_index"))
+    except (TypeError, ValueError):
+        index = -1
+    entry_path = HERE / "entries" / f"{index:06d}.json" if index >= 0 else None
+    if entry_path is None or not entry_path.exists():
+        problems.append(f"{label}: leaf_index {receipt.get('leaf_index')!r} names no published entry")
+        return problems
+    entry = json.loads(entry_path.read_text())
+    leaf_bytes = canonical_json(entry["leaf"])
+    # (a) the receipt's STH must be signed by THIS log's key ...
+    rsig = check_sth_signature(sth)
+    if rsig == "INVALID" or (rsig == "UNAVAILABLE" and not structural_only):
+        problems.append(f"{label}: STH signature {rsig}")
+    # (b) ... the named key fingerprint is REQUIRED and must be this key ...
+    fp = (sth.get("signatures", {}).get("ed25519", {}) or {}).get("public_key_fingerprint_sha256")
+    if not fp:
+        problems.append(f"{label}: STH lacks public_key_fingerprint_sha256 (required)")
+    elif (HERE / "provider.ed25519.pub").exists() and fp != key_fingerprint():
+        problems.append(f"{label}: STH signed by a different key than provider.ed25519.pub")
+    # (c) ... its log_id must be present and match the log ...
+    meta_path = HERE / "log-metadata.json"
+    if meta_path.exists():
+        meta_log_id = json.loads(meta_path.read_text()).get("log_id")
+        if meta_log_id and sth.get("log_id") != meta_log_id:
+            problems.append(f"{label}: STH log_id missing or not this log's")
+    # (d) ... the receipt's STH must appear in the published history ...
+    if heads and canonical_json(sth) not in {canonical_json(h) for h in heads}:
+        problems.append(f"{label}: STH not present in sth-history.jsonl")
+    # (e) ... the leaf_hash is REQUIRED and must match the named entry ...
+    if not receipt.get("leaf_hash"):
+        problems.append(f"{label}: leaf_hash missing (required)")
+    elif receipt["leaf_hash"] != leaf_hash(leaf_bytes).hex():
+        problems.append(f"{label}: leaf_hash does not match the named entry")
+    # (f) ... tree_size agreement ...
+    try:
+        size_agree = int(receipt.get("tree_size")) == int(sth.get("tree_size"))
+    except (TypeError, ValueError):
+        size_agree = False
+    if not size_agree:
+        problems.append(f"{label}: tree_size != its STH tree_size")
+    # (g) ... and finally the inclusion proof itself.
+    try:
+        ok = verify_inclusion(
+            leaf_bytes, index, int(receipt.get("tree_size") or 0),
+            [bytes.fromhex(h) for h in receipt.get("inclusion_proof") or []],
+            bytes.fromhex(sth.get("root_hash") or ""),
+        )
+    except (TypeError, ValueError):
+        ok = False
+    if not ok:
+        problems.append(f"{label}: inclusion proof INVALID")
+    print(f"receipt {label}: leaf {index} of {receipt.get('tree_size')} "
+          f"STH-sig:{rsig} bindings+inclusion:{'OK' if not problems else 'FAIL'}")
+    return problems
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--all", action="store_true")
@@ -182,45 +257,13 @@ def main() -> int:
                 failures.append(f"latest-sth tree_size {latest['tree_size']} != {len(leaves)} leaves")
             else:
                 print(f"latest-sth: size {latest['tree_size']} == leaf count, and == final history head  OK")
+        for receipt_path in sorted((HERE / "receipts").glob("*.receipt.json")):
+            failures += verify_receipt(json.loads(receipt_path.read_text()),
+                                       heads, args.structural_only, receipt_path.name)
 
     if args.receipt:
-        receipt = json.loads(Path(args.receipt).read_text())
-        sth = receipt["sth"]
-        index = int(receipt["leaf_index"])
-        entry = json.loads((HERE / "entries" / f"{index:06d}.json").read_text())
-        leaf_bytes = canonical_json(entry["leaf"])
-
-        # (a) the receipt's STH must be signed by THIS log's key ...
-        rsig = check_sth_signature(sth)
-        if rsig == "INVALID" or (rsig == "UNAVAILABLE" and not args.structural_only):
-            failures.append(f"receipt STH signature {rsig}")
-        # (b) ... fingerprint the receipt names must be this key ...
-        fp = (sth.get("signatures", {}).get("ed25519", {}) or {}).get("public_key_fingerprint_sha256")
-        if sigs_ok and fp and fp != key_fingerprint():
-            failures.append("receipt STH signed by a different key than provider.ed25519.pub")
-        # (c) ... its log_id must match the log ...
-        meta_log_id = json.loads((HERE / "log-metadata.json").read_text()).get("log_id") if (HERE / "log-metadata.json").exists() else None
-        if meta_log_id and sth.get("log_id") not in (None, meta_log_id):
-            failures.append("receipt STH log_id does not match this log")
-        # (d) ... the receipt's STH must actually appear in the published history ...
-        if heads and canonical_json(sth) not in {canonical_json(h) for h in heads}:
-            failures.append("receipt STH is not present in sth-history.jsonl")
-        # (e) ... the receipt's leaf_hash must match the named entry ...
-        if receipt.get("leaf_hash") and receipt["leaf_hash"] != leaf_hash(leaf_bytes).hex():
-            failures.append("receipt leaf_hash does not match the named entry")
-        # (f) ... tree_size agreement ...
-        if int(receipt.get("tree_size", -1)) != int(sth.get("tree_size", -2)):
-            failures.append("receipt tree_size != its STH tree_size")
-        # (g) ... and finally the inclusion proof itself.
-        ok = verify_inclusion(
-            leaf_bytes, index, int(receipt["tree_size"]),
-            [bytes.fromhex(h) for h in receipt["inclusion_proof"]],
-            bytes.fromhex(sth["root_hash"]),
-        )
-        if not ok:
-            failures.append("receipt inclusion proof")
-        print(f"receipt leaf {index} of {receipt['tree_size']}: STH-sig:{rsig} bindings:"
-              f"{'OK' if not any('receipt' in f for f in failures) else 'FAIL'} inclusion:{'VALID' if ok else 'INVALID'}")
+        failures += verify_receipt(json.loads(Path(args.receipt).read_text()),
+                                   heads, args.structural_only, Path(args.receipt).name)
 
     mode = "REDUCED (structural only, signatures NOT checked)" if args.structural_only else "full"
     if failures:

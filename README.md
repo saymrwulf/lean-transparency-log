@@ -24,7 +24,8 @@ Layout:
 | `sth-history.jsonl` | **every** Signed Tree Head ever issued — the witness channel: all cloners see the same heads |
 | `latest-sth.json` | the current head |
 | `provider.ed25519.pub` | the provider's public key (the sole trust anchor) |
-| `verify.py` | standalone verifier, Python standard library only |
+| `verify.py` | standalone verifier (Python stdlib + the `openssl` binary; fails closed without them; `--all` covers every published receipt) |
+| `verify_selftest.py` | adversarial self-test: proves the verifier's fail-closed paths reject mutated receipts |
 
 Verify everything locally, no installation:
 
