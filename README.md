@@ -23,7 +23,7 @@ Layout:
 | `receipts/<component>.receipt.json` | inclusion proof binding that attestation to the latest signed head |
 | `sth-history.jsonl` | **every** Signed Tree Head ever issued — the witness channel: all cloners see the same heads |
 | `latest-sth.json` | the current head |
-| `provider.ed25519.pub` | the provider's public key (the sole trust anchor) |
+| `provider.ed25519.pub` | the provider's public key — the sole cryptographic identity anchor; each statement's truth additionally rests on the assumptions stated in its leaf |
 | `verify.py` | standalone verifier (Python stdlib + the `openssl` binary; fails closed without them; `--all` covers every published receipt) |
 | `verify_selftest.py` | adversarial self-test: proves the verifier's fail-closed paths reject mutated receipts |
 
@@ -41,8 +41,9 @@ The provider tooling, agent tooling, and course materials:
 **https://github.com/saymrwulf/proof-aware-crypto-tooling-agent**
 
 Honesty notes, always in force: attestations cover Rust **source** at a
-pinned commit (clone it — the git hash is the content hash — and build it
-yourself; compilers are declared trusted base). The log deliberately
+pinned commit (clone it — the commit identifies the committed git tree,
+not dependencies or toolchains — and build it yourself; compilers are
+declared trusted base). The log deliberately
 retains early leaves recording a **failed** audit run: an append-only
 trust ledger keeps its history. Tree heads are signed by the merkleized,
 proof-attested Ed25519 library itself, and each signature embeds the
