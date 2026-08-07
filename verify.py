@@ -8,7 +8,11 @@ files in this repository alone:
   1. every entry's leaf hash,
   2. every historical Signed Tree Head against the recomputed prefix root
      (a split view or tampered entry fails here),
-  3. every STH Ed25519 signature,
+  3. every STH Ed25519 signature — and, where a head carries the ADDITIVE
+     SLH-DSA-SHA2-128s signature (FIPS 205, heads from 2026-08 on), that
+     too: a present-but-wrong post-quantum signature FAILS the run, a head
+     without one is allowed, and an OpenSSL too old to check it (pre-3.5)
+     is reported loudly as a degradation, never counted as verified,
   4. every published receipt under receipts/ (with --all), and any receipt
      supplied via --receipt FILE, as a FULL transparency receipt: type tag,
      STH signature, REQUIRED key fingerprint, log id, presence of its STH
@@ -126,6 +130,57 @@ def check_sth_signature(head) -> str:
     return "VALID" if result.returncode == 0 else "INVALID"
 
 
+def check_slh_dsa_signature(head):
+    """ADDITIVE post-quantum check (SLH-DSA-SHA2-128s, FIPS 205).
+
+    Returns (status, hard_failure). Ed25519 remains the REQUIRED signature;
+    this one is verified when the head carries it and the local OpenSSL
+    (>= 3.5) can check it. The distinctions matter:
+      ABSENT    - head predates the second signature. Allowed: additive.
+      VALID     - verified against provider.slhdsa.pub.
+      INVALID   - present and WRONG. Hard failure - a bad signature is never
+                  a degradation.
+      WRONG-KEY - the head names a different key than the mirror ships.
+                  Hard failure.
+      NO-PUBKEY - the head claims the signature but the mirror ships no
+                  provider.slhdsa.pub. Broken publication: hard failure.
+      TOOLING   - this OpenSSL cannot read SLH-DSA keys (pre-3.5). Honest
+                  degradation: reported loudly, never counted as verified,
+                  never failed - the required Ed25519 check still gates.
+    """
+    slh = (head.get("signatures") or {}).get("slh_dsa") or {}
+    if slh.get("status") != "signed":
+        return "ABSENT", False
+    key = HERE / "provider.slhdsa.pub"
+    openssl = shutil.which("openssl")
+    if not openssl:
+        return "TOOLING", False
+    if not key.exists():
+        return "NO-PUBKEY", True
+    fp = slh.get("public_key_fingerprint_sha256")
+    if fp and fp != hashlib.sha256(key.read_bytes()).hexdigest():
+        return "WRONG-KEY", True
+    probe = subprocess.run([openssl, "pkey", "-pubin", "-in", str(key), "-noout"],
+                           capture_output=True)
+    if probe.returncode != 0:
+        return "TOOLING", False
+    payload = canonical_json({k: v for k, v in head.items() if k != "signatures"})
+    with tempfile.TemporaryDirectory() as tmp:
+        payload_path = Path(tmp) / "p"
+        signature_path = Path(tmp) / "s"
+        payload_path.write_bytes(payload)
+        try:
+            signature_path.write_bytes(base64.b64decode(slh.get("signature_base64", "")))
+        except Exception:
+            return "INVALID", True
+        result = subprocess.run(
+            [openssl, "pkeyutl", "-verify", "-pubin", "-inkey", str(key), "-rawin",
+             "-in", str(payload_path), "-sigfile", str(signature_path)],
+            capture_output=True,
+        )
+    return ("VALID", False) if result.returncode == 0 else ("INVALID", True)
+
+
 RECEIPT_TYPE = "pacta.transparency.receipt.v1"
 
 
@@ -231,6 +286,7 @@ def main() -> int:
         # published latest-sth.json is exactly the final history head.
         previous = -1
         log_id = None
+        slh_tooling_seen = False
         for position, head in enumerate(heads):
             size = int(head["tree_size"])
             if size > len(leaves):
@@ -246,8 +302,20 @@ def main() -> int:
             signature = check_sth_signature(head)
             if signature == "INVALID" or (signature == "UNAVAILABLE" and not args.structural_only):
                 failures.append(f"STH #{position} signature {signature}")
-            print(f"STH #{position} size={size} root={head['root_hash'][:16]}… prefix-root:{structural} signature:{signature}")
+            if args.structural_only:
+                slh = "SKIPPED"
+            else:
+                slh, slh_hard = check_slh_dsa_signature(head)
+                if slh_hard:
+                    failures.append(f"STH #{position} slh_dsa {slh}")
+                if slh == "TOOLING":
+                    slh_tooling_seen = True
+            print(f"STH #{position} size={size} root={head['root_hash'][:16]}… prefix-root:{structural} signature:{signature} slh_dsa:{slh}")
             previous = max(previous, size)
+        if slh_tooling_seen:
+            print("NOTE: this log carries an ADDITIVE SLH-DSA (FIPS 205) signature that "
+                  "your OpenSSL cannot check (needs >= 3.5). The required Ed25519 checks "
+                  "above still gate this result; the post-quantum signature was NOT verified.")
         latest_path = HERE / "latest-sth.json"
         if latest_path.exists() and heads:
             latest = json.loads(latest_path.read_text())

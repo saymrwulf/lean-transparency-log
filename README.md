@@ -11,8 +11,12 @@ kernel-checked proofs *about the accumulator model* underlying its own
 inclusion and consistency reasoning, as one of its own entries (subject
 [`ltl-accumulator-verified`](https://github.com/saymrwulf/ltl-accumulator-verified);
 scoped to the mechanized model — it does not prove operator honesty,
-signing, or execution provenance). Current head: tree size 13, root
-`3488a2d0…`.
+signing, or execution provenance). As of **2026-08** the log also attests
+the **SLH-DSA (FIPS 205) verify-path proofs**
+([`fips205-slhdsa-verified`](https://github.com/saymrwulf/fips205-slhdsa-verified))
+and its heads carry an **additive post-quantum SLH-DSA-SHA2-128s signature**
+beside the required Ed25519 one. The current head is `latest-sth.json` —
+this README deliberately names no tree size, so it cannot go stale.
 
 Layout:
 
@@ -23,7 +27,8 @@ Layout:
 | `receipts/<component>.receipt.json` | inclusion proof binding that attestation to the latest signed head |
 | `sth-history.jsonl` | **every** Signed Tree Head ever issued — the witness channel: all cloners see the same heads |
 | `latest-sth.json` | the current head |
-| `provider.ed25519.pub` | the provider's public key — the sole cryptographic identity anchor; each statement's truth additionally rests on the assumptions stated in its leaf |
+| `provider.ed25519.pub` | the provider's Ed25519 public key — the REQUIRED identity anchor; each statement's truth additionally rests on the assumptions stated in its leaf |
+| `provider.slhdsa.pub` | the provider's SLH-DSA-SHA2-128s public key (FIPS 205) — checks the ADDITIVE post-quantum head signature; needs OpenSSL >= 3.5, and verify.py degrades honestly below that |
 | `verify.py` | standalone verifier (Python stdlib + the `openssl` binary; fails closed without them; `--all` covers every published receipt) |
 | `verify_selftest.py` | adversarial self-test: proves the verifier's fail-closed paths reject mutated receipts |
 
@@ -47,4 +52,11 @@ declared trusted base). The log deliberately
 retains early leaves recording a **failed** audit run: an append-only
 trust ledger keeps its history. Tree heads are signed by the merkleized,
 proof-attested Ed25519 library itself, and each signature embeds the
-provider's own Merkle self-check of that library's leaf.
+provider's own Merkle self-check of that library's leaf. Heads additionally
+carry a **deterministic SLH-DSA-SHA2-128s signature** over the same payload:
+additive, so Ed25519 remains the signature a consumer must check, and honest
+about scope — the estate's certificates cover the *verification* path of both
+algorithms; no signing operation is proven for either, and leaves themselves
+are Ed25519-signed at issuance only. Heads published before 2026-08 have no
+SLH-DSA signature and verify.py reports them as `slh_dsa:ABSENT`, which is
+allowed — an append-only log keeps its history.

@@ -1,0 +1,271 @@
+{
+  "index": 18,
+  "leaf": {
+    "attestation": {
+      "certificates": [
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "name": "fips205.base2b_outer_loop_eq",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext",
+            "verify_mono.oracle.f"
+          ],
+          "name": "fips205.chain_free_loop_eq",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound",
+            "verify_mono.oracle.f"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext",
+            "verify_mono.oracle.h"
+          ],
+          "name": "fips205.fors_inner_loop_eq",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound",
+            "verify_mono.oracle.h"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext",
+            "verify_mono.oracle.f",
+            "verify_mono.oracle.h"
+          ],
+          "name": "fips205.fors_outer_loop_eq",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound",
+            "verify_mono.oracle.f",
+            "verify_mono.oracle.h"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext",
+            "verify_mono.oracle.f",
+            "verify_mono.oracle.h",
+            "verify_mono.oracle.t_l"
+          ],
+          "name": "fips205.ht_loop_eq",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound",
+            "verify_mono.oracle.f",
+            "verify_mono.oracle.h",
+            "verify_mono.oracle.t_l"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext",
+            "verify_mono.oracle.f",
+            "verify_mono.oracle.h",
+            "verify_mono.oracle.h_msg",
+            "verify_mono.oracle.t_l",
+            "verify_mono.oracle.t_len"
+          ],
+          "name": "fips205.slh_verify_128s_accepts_iff",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound",
+            "verify_mono.oracle.f",
+            "verify_mono.oracle.h",
+            "verify_mono.oracle.h_msg",
+            "verify_mono.oracle.t_l",
+            "verify_mono.oracle.t_len"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "name": "fips205.to_byte_loop_eq",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "name": "fips205.to_int_loop_eq",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "name": "fips205.wots_csum_loop_eq",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext",
+            "verify_mono.oracle.f"
+          ],
+          "name": "fips205.wots_loop1_eq",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound",
+            "verify_mono.oracle.f"
+          ],
+          "status": "proven"
+        },
+        {
+          "axiom_status": "clean",
+          "diagnostics": [],
+          "expected_axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext",
+            "verify_mono.oracle.h"
+          ],
+          "name": "fips205.xmss_loop_eq",
+          "observed_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound",
+            "verify_mono.oracle.h"
+          ],
+          "status": "proven"
+        }
+      ],
+      "environment": {
+        "env_script": "~/aeneas-toolchain/env.sh",
+        "lake_version": "Lake version 5.0.0-src+3dc1a08 (Lean version 4.30.0-rc2)",
+        "lean_project_dir": "$AENEAS_HOME/backends/lean",
+        "lean_version": "Lean (version 4.30.0-rc2, x86_64-unknown-linux-gnu, commit 3dc1a088b6d2d8eafe25a7cd7ec7b58d731bd7cc, Release)"
+      },
+      "issued_at": "2026-08-07T07:22:00Z",
+      "machine_protection": {
+        "lean_guard": "verification/lean-guard",
+        "note": "All Lean compiles route through the repo's lean-guard (memory cap, core pinning, timeout, single-flight lock) when configured."
+      },
+      "provider": "local-provider",
+      "replay": {
+        "axiom_attempted": true,
+        "axiom_diagnostics": [],
+        "axiom_log_path": "/tmp/claude-1000/-home-oho-GitClone-Claude-FormalVerification/371a28b5-864a-4953-a400-61066a13ba91/scratchpad/rehearsal/logs/axiom-audit.log",
+        "axiom_ok": true,
+        "check_attempted": true,
+        "check_log_path": "/tmp/claude-1000/-home-oho-GitClone-Claude-FormalVerification/371a28b5-864a-4953-a400-61066a13ba91/scratchpad/rehearsal/logs/lean-check.log",
+        "check_ok": true,
+        "checked_files": 14,
+        "diagnostics": [],
+        "failed_files": []
+      },
+      "schema_version": 1,
+      "scope": {
+        "deployment_constraints": [
+          "proved subject is the private verify_mono facade; the bridge to the deployed generic pk.verify() is a 137-case differential test, not a machine-checked refinement (TRUSTED-BASE item 9)"
+        ],
+        "exclusions": [
+          "the five verify-path hash oracles h_msg/f/h/t_l/t_len (assumed, not proven against FIPS 180-4)",
+          "signing and key generation (out of extraction scope entirely)",
+          "everything above the extraction root: M' assembly, the pure/prehash domain-separator byte, ctx length bound, deserialization (TRUSTED-BASE item 10)",
+          "the base_2b inner loop (threaded opaquely, no certificate)",
+          "parameter sets other than SLH-DSA-SHA2-128s",
+          "compiler correctness and side channels"
+        ],
+        "guarantees": []
+      },
+      "signature": {
+        "payload_digest_sha256": "bcc0a0c85a4e8ea93d017bdb26df6048f22b1ba2c71179158b05541cf7d11f87",
+        "public_key_fingerprint_sha256": "874c8a008a607021528b2493fa1caf059f9d5c123d29193dfabc09a6d1e7a56a",
+        "scheme": "openssl-ed25519",
+        "signature_base64": "SW9k8lzpVIzVB+WoEFOENdAsY5/u02FC9Q6Uk822UoP+oRij+JSB5Um1mNJ8q5JOhq0IH7ybkxhiYL6BvbgRCA==",
+        "signing_backend": "verified-dalek-serial",
+        "status": "signed"
+      },
+      "subject": {
+        "component": "fips205-slhdsa-verified",
+        "kind": "slh_dsa",
+        "repo_commit": "d44b70d80611d62bfa378cb17a780165a441c4fc",
+        "repo_url": "https://github.com/saymrwulf/fips205-slhdsa-verified.git",
+        "verification_dir": "verification",
+        "verified_backend": "verify-mono/sha2-128s"
+      }
+    },
+    "schema_version": 1,
+    "type": "pacta.transparency.attestation_leaf.v1"
+  },
+  "leaf_hash": "96be9a56c248013ed92c69a279ffa8f050576f52d1b92652325d31b2dffa584b"
+}

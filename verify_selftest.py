@@ -77,6 +77,40 @@ def main() -> int:
     cases.append(("--structural-only is explicit, never claims full",
                   code == 0 and "REDUCED" in out and "[full]" not in out))
 
+    # The ADDITIVE post-quantum signature must fail closed when tampered.
+    # Applicable only to mirrors whose heads carry it; older mirrors record
+    # the case as not-applicable rather than silently passing.
+    latest = json.loads((HERE / "latest-sth.json").read_text())
+    slh = (latest.get("signatures") or {}).get("slh_dsa") or {}
+    if slh.get("status") == "signed":
+        import base64 as _b64
+        import shutil as _sh
+        with tempfile.TemporaryDirectory() as tmp:
+            mirror = Path(tmp) / "mirror"
+            _sh.copytree(HERE, mirror)
+            raw = bytearray(_b64.b64decode(slh["signature_base64"])); raw[0] ^= 1
+            bad = _b64.b64encode(bytes(raw)).decode()
+            for name in ("latest-sth.json", "sth-history.jsonl"):
+                path = mirror / name
+                text = path.read_text().replace(slh["signature_base64"], bad)
+                path.write_text(text)
+            result = subprocess.run([sys.executable, str(mirror / "verify.py"), "--all"],
+                                    capture_output=True, text=True)
+            cases.append(("corrupted slh_dsa signature REJECTED",
+                          result.returncode == 1 and "slh_dsa:INVALID" in result.stdout))
+            # and the missing-pubkey path: a mirror claiming the signature but
+            # shipping no key is a broken publication, not a degradation.
+            (mirror / "provider.slhdsa.pub").unlink()
+            for name in ("latest-sth.json", "sth-history.jsonl"):
+                path = mirror / name
+                path.write_text(path.read_text().replace(bad, slh["signature_base64"]))
+            result = subprocess.run([sys.executable, str(mirror / "verify.py"), "--all"],
+                                    capture_output=True, text=True)
+            cases.append(("signed slh_dsa without published key REJECTED",
+                          result.returncode == 1 and "NO-PUBKEY" in result.stdout))
+    else:
+        cases.append(("slh_dsa cases n/a (no signed slh_dsa block in this mirror)", True))
+
     with tempfile.TemporaryDirectory() as tmp:
         os.symlink(sys.executable, Path(tmp) / Path(sys.executable).name)
         code, out = run("--all", env={"PATH": tmp})
